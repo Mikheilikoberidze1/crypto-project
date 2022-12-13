@@ -13,12 +13,8 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
       
       if (change24h>=0)color = 'green';
       else color = 'red';
-    return (
-       
-    
-    
-               
-              <tr> <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt="Coin img"></img>{Capitalise(name)}</div>
+    return (<tr>
+                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt="Coin img"></img>{Capitalise(name)}</div>
                  </td>
                  <td>
                  <div>${numberFormatter.format(price.toFixed(2))}</div>
@@ -35,11 +31,7 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
                  <td>
                  {Cryptochart(charter,color)}
                  </td>
-                 </tr>
-            
-     
-  
-    )
+                 </tr>)
     
 }
 /*

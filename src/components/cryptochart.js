@@ -22,7 +22,6 @@ function Cryptochart(charter,color) {
       });
     const [charterer,setCharterer] = useState([]);
       const [chartOptions, setChartOptions] = useState({});
-      console.log(charter);
       useEffect(() => {
        setCharterer(charter);
         setChartData({
@@ -81,7 +80,7 @@ function Cryptochart(charter,color) {
       }, [charterer]);
      
     return (
-        <div  style={{width: '200px',height : '70px', 'margin-right':'1px'}}>
+        <div  style={{width: '200px',height : '70px', 'marginRight':'1px'}}>
              <Line options={chartOptions} data={chartData} />
         </div>
     )

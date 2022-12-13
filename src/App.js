@@ -1,12 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { fetchPrices } from './client';
+import { fetchHistory, fetchPrices } from './client';
 import { CryptoBox } from './components/CryptoBox';
 import navigationbar from './components/navigationbar';
 import Table from 'react-bootstrap/Table';
 
 function App() {
   const [prices, setPrices] = useState();
+  const [data, setData] = useState([]);
   const refreshData = async() => {
     const data = await fetchPrices();
     setPrices(data);
@@ -14,32 +15,33 @@ function App() {
   
   useEffect(() => {
     refreshData();
-    
   }, []);
-  const renderPrices = () => {
+
+  useEffect(() => {
+    if (prices) {
+      calculateData().then(data => {
+        setData(data);
+      });
+    }
+  }, [prices]);
+
+  const calculateData = async() => {
     const result =  [];
     if (!prices) {
       return [];
     }
-    
-    Object.keys(prices).map(key => {
-      var arr=[];
-      const fetchData2 = async (key) => {
-        const result2 = await fetch(
-          `https://api.coingecko.com/api/v3/coins/${key}/market_chart?vs_currency=usd&days=6&interval=daily`,
-        );
-        
-        const data2 = await result2.json();
-        data2.prices.forEach(element => {
-          arr.push(element[1]);
-        })
-        
-      }
-        fetchData2(key);
-        
-      result.push(<CryptoBox price={prices[key].usd} name={key} change24h={prices[key].usd_24h_change} volume24h={prices[key].usd_24h_vol} marketcap={prices[key].usd_market_cap} charter={arr}/>);
-     })
-     
+    for (let key of Object.keys(prices)) {
+        const arr = await fetchHistory(key);
+        const item = {
+          price: prices[key].usd,
+          name: key,
+          change24h: prices[key].usd_24h_change,
+          volume24h: prices[key].usd_24h_vol,
+          marketcap: prices[key].usd_market_cap,
+          charter: arr,
+        }
+        result.push(item);
+     }
     return result;
   }
  
@@ -61,7 +63,11 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-              {renderPrices()}
+              {
+                data.map(item => (
+                  <CryptoBox key={item.name} name={item.name} price={item.price} change24h={item.change24h} volume24h={item.volume24h} marketcap={item.marketcap} charter={item.charter} />
+                ))
+              }
               </tbody>
      </Table>
   </div>
