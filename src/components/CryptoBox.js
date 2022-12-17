@@ -1,5 +1,9 @@
 import Table from 'react-bootstrap/Table';
 import Cryptochart from './cryptochart';
+import Modalbox from './Modalbox';
+import { useEffect, useState } from 'react';
+
+
 export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
     //console.log(charter)
     function financial(x) {
@@ -14,7 +18,7 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
       if (change24h>=0)color = 'green';
       else color = 'red';
     return (<tr>
-                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt="Coin img"></img>{Capitalise(name)}</div>
+                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt="Coin img"></img>{Capitalise(name)} {Modalbox(charter,name,color)}</div>
                  </td>
                  <td>
                  <div>${numberFormatter.format(price.toFixed(2))}</div>

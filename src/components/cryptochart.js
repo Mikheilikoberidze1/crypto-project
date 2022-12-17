@@ -15,7 +15,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   );
-function Cryptochart(charter,color) {
+export default function Cryptochart(charter,color) {
 
     const [chartData, setChartData] = useState({
         datasets: [],
@@ -43,6 +43,10 @@ function Cryptochart(charter,color) {
               position: "top",
             },
             title: {
+              display: false,
+              text: "",
+            },
+            label: {
               display: false,
               text: "",
             },
@@ -85,4 +89,3 @@ function Cryptochart(charter,color) {
         </div>
     )
 }
-export default Cryptochart;
