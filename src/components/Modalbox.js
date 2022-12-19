@@ -12,15 +12,15 @@ const style = {
   transform: 'translate(-50%, -50%)',
   
   width: '55%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  backdropFilter: "blur(5px)",
+  
   boxShadow: 24,
   p: 4,
 };
 
 
 
-export default function BasicModal(charter,name) {
+export default function Modalbox(charter,name,color) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,7 +28,7 @@ export default function BasicModal(charter,name) {
 
    return (
     <div>
-         <Button onClick={handleOpen}>Open modal</Button>
+         <Button onClick={handleOpen}>Details</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -36,7 +36,7 @@ export default function BasicModal(charter,name) {
       >
         <Box sx={style}>
           
-        {Cryptochartmodal(charter,name)}
+        {Cryptochartmodal(charter,name,color)}
          </Box>
       </Modal>
     </div>

@@ -5,6 +5,7 @@ import {
   PointElement,
   LineElement,
   Title,
+  Filler,
   
 } from "chart.js";
 import { Line } from "react-chartjs-2";
@@ -16,6 +17,7 @@ LinearScale,
 PointElement,
 LineElement,
 Title,
+Filler,
 );
 export default function Cryptochartmodal(charter,name,color) {
   const [chartData, setChartData] = useState({
@@ -25,13 +27,15 @@ export default function Cryptochartmodal(charter,name,color) {
     useEffect(() => {
       console.log(charter);
       setChartData({
+        
         labels: ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6", "Day7"],
         datasets: [
           {
+            fill: true,
             label: "",
             data: charter,
-            borderColor: 'green',
-            backgroundColor: color,
+            borderColor: color,
+            backgroundColor: `${color},0.5)`,
           },
         ],
       });
@@ -45,6 +49,7 @@ export default function Cryptochartmodal(charter,name,color) {
           title: {
             display: true,
             text: name,
+            color: 'white',
           },
           label: {
             display: false,
@@ -55,6 +60,7 @@ export default function Cryptochartmodal(charter,name,color) {
           x: {
             ticks: {
               display: true,
+              color: 'white',
             },
       
             grid: {
@@ -67,6 +73,7 @@ export default function Cryptochartmodal(charter,name,color) {
             ticks: {
               display: true,
               beginAtZero: true,
+              color: 'white',
             },
             grid: {
               drawBorder: false,

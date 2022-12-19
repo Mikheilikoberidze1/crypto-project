@@ -71,10 +71,8 @@ function App() {
               </tbody>
      </Table>
   </div>
-    
-      
-
-      </div>
+   </div>
+            
   );
 }
 

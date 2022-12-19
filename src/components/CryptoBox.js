@@ -15,10 +15,10 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
       const numberFormatter = Intl.NumberFormat('en-US');
       let color = '';
       
-      if (change24h>=0)color = 'green';
-      else color = 'red';
+      if (change24h>=0)color = 'rgba(0, 255, 0';
+      else color = 'rgba(255, 0, 0';
     return (<tr>
-                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt="Coin img"></img>{Capitalise(name)} {Modalbox(charter,name,color)}</div>
+                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt={`${name} img`}></img>{Capitalise(name)} {Modalbox(charter,name,color)}</div>
                  </td>
                  <td>
                  <div>${numberFormatter.format(price.toFixed(2))}</div>
