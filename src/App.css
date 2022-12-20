@@ -10,6 +10,32 @@ body{
 .coinimg{
   width: 45px;
 }
+@media screen and (max-width: 1000px) {
+  .coinimg {
+    width: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .coinimg {
+    width: 35px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .coinimg {
+    width: 10px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .chartdiv {
+    flex-direction: column;
+  }
+}
+.chartdiv{
+  display: flex;
+  max-width: 90%;
+  flex-direction: row;
+}
 .tdboys {
   text-align: right;
 }

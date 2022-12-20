@@ -18,7 +18,7 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
       if (change24h>=0)color = 'rgba(0, 255, 0';
       else color = 'rgba(255, 0, 0';
     return (<tr>
-                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt={`${name} img`}></img>{Capitalise(name)} {Modalbox(charter,name,color)}</div>
+                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt={`${name} img`}></img>{Capitalise(name)}</div>
                  </td>
                  <td>
                  <div>${numberFormatter.format(price.toFixed(2))}</div>
@@ -32,8 +32,10 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
                  <td>
                  <div>${numberFormatter.format(marketcap.toFixed(2))}</div>
                  </td>
-                 <td>
-                 {Cryptochart(charter,color)}
+                 <td style={{'maxWidth':'150px','marginRight':'0px'}}>
+                  <div className='chartdiv'>
+                 {Cryptochart(charter,color)} {Modalbox(charter,name,color)}
+                 </div>
                  </td>
                  </tr>)
     

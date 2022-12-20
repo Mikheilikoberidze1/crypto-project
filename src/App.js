@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { fetchHistory, fetchPrices } from './client';
+import { fetchHistory, fetchPrices, fetchHistory2 } from './client';
 import { CryptoBox } from './components/CryptoBox';
 import navigationbar from './components/navigationbar';
 import Table from 'react-bootstrap/Table';

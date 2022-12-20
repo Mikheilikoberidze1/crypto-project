@@ -15,3 +15,16 @@ export async function fetchHistory(key) {
     });
     return arr;
   }
+
+  export async function fetchHistory2(key) {
+    const arr = [];
+    const result2 = await fetch(
+      `https://api.coingecko.com/api/v3/coins/${key}/market_chart?vs_currency=usd&days=14&interval=daily`,
+    );
+    
+    const data2 = await result2.json();
+    data2.prices.forEach(element => {
+      arr.push(element[1]);
+    });
+    return arr;
+  }

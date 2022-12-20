@@ -25,7 +25,6 @@ export default function Cryptochartmodal(charter,name,color) {
     });
     const [chartOptions, setChartOptions] = useState({});
     useEffect(() => {
-      console.log(charter);
       setChartData({
         
         labels: ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6", "Day7"],
