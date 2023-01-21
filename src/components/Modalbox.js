@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import Cryptochartmodal from './cryptochartmodal';
+import detailicon from '../images/detail.png';
 
 const style = {
   position: 'absolute',
@@ -19,7 +20,6 @@ const style = {
 };
 
 
-
 export default function Modalbox(charter,name,color) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -28,7 +28,7 @@ export default function Modalbox(charter,name,color) {
 
    return (
     <div>
-         <Button onClick={handleOpen}>Details</Button>
+         <Button onClick={handleOpen}><img className='detailicon' src={detailicon} alt="Details icon"></img><span>Details</span></Button>
       <Modal
         open={open}
         onClose={handleClose}

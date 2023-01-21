@@ -84,7 +84,7 @@ export default function Cryptochart(charter,color) {
       }, [charterer]);
      
     return (
-        <div  style={{width: '80%',height : '70px', 'marginRight':'1px'}}>
+        <div  style={{width: '80%', maxHeight : '70px', 'marginRight':'1px'}}>
              <Line options={chartOptions} data={chartData} />
         </div>
     )

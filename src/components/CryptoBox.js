@@ -18,19 +18,19 @@ export function CryptoBox({name, price,change24h,volume24h,marketcap,charter}) {
       if (change24h>=0)color = 'rgba(0, 255, 0';
       else color = 'rgba(255, 0, 0';
     return (<tr>
-                <td><div><img className='coinimg' src={require(`../images/${name}.png`)} alt={`${name} img`}></img>{Capitalise(name)}</div>
+                <td><div className='table-skeleton'><img className='coinimg' src={require(`../images/${name}.png`)} alt={`${name} img`}></img>{Capitalise(name)}</div>
                  </td>
                  <td>
-                 <div>${numberFormatter.format(price.toFixed(2))}</div>
+                 <div className='table-skeleton'>${numberFormatter.format(price.toFixed(2))}</div>
                 </td>
                 <td>
-                 <div style={{color : color}}>{change24h.toFixed(2)}%</div>
+                 <div style={{color : color}} className='table-skeleton'>{change24h.toFixed(2)}%</div>
                  </td>
                  <td>
-                 <div>${numberFormatter.format(volume24h.toFixed(2))}</div>
+                 <div className='table-skeleton'>${numberFormatter.format(volume24h.toFixed(2))}</div>
                  </td>
                  <td>
-                 <div>${numberFormatter.format(marketcap.toFixed(2))}</div>
+                 <div className='table-skeleton'>${numberFormatter.format(marketcap.toFixed(2))}</div>
                  </td>
                  <td style={{'maxWidth':'150px','marginRight':'0px'}}>
                   <div className='chartdiv'>

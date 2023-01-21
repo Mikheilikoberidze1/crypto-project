@@ -4,10 +4,12 @@ import { fetchHistory, fetchPrices, fetchHistory2 } from './client';
 import { CryptoBox } from './components/CryptoBox';
 import navigationbar from './components/navigationbar';
 import Table from 'react-bootstrap/Table';
+import TableSkeleton from './components/TableSkeleton';
 
 function App() {
   const [prices, setPrices] = useState();
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const refreshData = async() => {
     const data = await fetchPrices();
     setPrices(data);
@@ -21,6 +23,7 @@ function App() {
     if (prices) {
       calculateData().then(data => {
         setData(data);
+        setIsLoading(false);
       });
     }
   }, [prices]);
@@ -50,7 +53,7 @@ function App() {
     <div>
     {navigationbar()}
     <div className='tbl'>
-    <Table striped bordered="true" hover variant="dark">
+    <Table className='tablewidth' striped bordered="true" hover variant="dark">
     <thead>
                 <tr>
                   <th>Name</th>
@@ -63,6 +66,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
+              {isLoading && <TableSkeleton counts={8}/>}
               {
                 data.map(item => (
                   <CryptoBox key={item.name} name={item.name} price={item.price} change24h={item.change24h} volume24h={item.volume24h} marketcap={item.marketcap} charter={item.charter} />
@@ -71,6 +75,7 @@ function App() {
               </tbody>
      </Table>
   </div>
+  
    </div>
             
   );
